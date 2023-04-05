@@ -1,18 +1,6 @@
 
-# Real-time-Chatting-dating-app-with-firebase
+# Dating App
 
-this project have these features : 
+Native Android app [Java, Firebase]
 
-                            * Firebase Authentication 
-                            * Firebase Firestore 
-                            * Firebase Facebook Auth
-                            * Match to Allow Chat
-
-Firebase Setup: 
-
-                            * Connect to Firebase
-                            * Create Firebase Project 
-                            * Firebase Console Login 
-                            * Firebase Authentication 
-                            * Firebase Firestore
-                            * Firebase Storage
+<img width="1462" alt="Screenshot 2023-04-05 at 6 50 40 PM" src="https://user-images.githubusercontent.com/31673628/230220062-7db857f5-328b-4faf-ba3a-5cd184719662.png">
