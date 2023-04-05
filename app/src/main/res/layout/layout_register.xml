@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:ls="http://schemas.android.com/tools"
+    style="@style/loginCard"
+    app:cardCornerRadius="@dimen/_20sdp"
+    android:elevation="5dp"
+    android:layout_gravity="center"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/colorWhite">
+
+    <LinearLayout
+        style="@style/AppTheme"
+        android:layout_gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/_10sdp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top"
+            android:orientation="vertical"
+
+           >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:textColor="@color/colorOrangeLight"
+                android:text="Sign Up"
+                android:fontFamily="@font/leckerlione_regular"
+                android:textStyle="italic"
+                android:textSize="@dimen/_20sdp"
+               />
+
+            <EditText
+                android:fontFamily="@font/leckerlione_regular"
+                android:id="@+id/editTextRegisterName"
+                android:layout_width="match_parent"
+                android:textColorHint="@color/colorPink"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:background="@drawable/edittext_capsule"
+                android:hint="@string/firstname"
+                android:inputType="textCapWords"
+                android:padding="@dimen/_15sdp"
+                android:textColor="@color/colorPink"
+                android:textStyle="bold" />
+
+            <RadioGroup
+                android:id="@+id/radioGroupRegisterGender"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/_10sdp"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:fontFamily="@font/leckerlione_regular"
+                    android:id="@+id/radioRegisterMale"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
+                    android:buttonTint="@color/colorPink"
+                    android:onClick="radioButtonRegisterGender"
+                    android:text="@string/male"
+                    android:textColor="@color/colorPink"
+                    android:textSize="@dimen/_15ssp"
+                    android:textStyle="bold" />
+
+                <RadioButton
+                    android:fontFamily="@font/leckerlione_regular"
+                    android:id="@+id/radioRegisterFemale"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="50dp"
+                    android:layout_marginLeft="@dimen/_40sdp"
+                    android:background="@android:color/transparent"
+                    android:buttonTint="@color/colorPink"
+                    android:onClick="radioButtonRegisterGender"
+                    android:text="@string/female"
+                    android:textColor="@color/colorPink"
+                    android:textSize="@dimen/_15ssp"
+                    android:textStyle="bold" />
+
+            </RadioGroup>
+
+
+            <TextView
+                android:fontFamily="@font/leckerlione_regular"
+                android:id="@+id/textViewRegisterBirthday"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/_10sdp"
+                android:background="@drawable/edittext_capsule"
+                android:hint="@string/birthday"
+                android:inputType="none"
+                android:padding="15dp"
+                android:textColor="@color/colorPink"
+                android:textColorHint="@color/colorPink"
+                android:textSize="@dimen/_15ssp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:fontFamily="@font/leckerlione_regular"
+                android:id="@+id/editTextRegisterEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColorHint="@color/colorPink"
+                android:layout_marginBottom="@dimen/_10sdp"
+                android:background="@drawable/edittext_capsule"
+                android:hint="@string/email"
+                android:inputType="textEmailAddress"
+                android:padding="@dimen/_15ssp"
+                android:textColor="@color/colorPink"
+                android:textStyle="bold" />
+
+
+            <EditText
+                android:fontFamily="@font/leckerlione_regular"
+                android:id="@+id/editTextRegisterPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/_30sdp"
+                android:background="@drawable/edittext_capsule"
+                android:hint="@string/password"
+                android:textColorHint="@color/colorPink"
+                android:inputType="textPassword"
+                android:padding="@dimen/_15ssp"
+                android:textColor="@color/colorPink"
+                android:textStyle="bold" />
+
+
+            <Button
+                android:id="@+id/btnRegisterPageRegister"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="@dimen/_10sdp"
+                android:background="@drawable/button_capsule"
+                android:backgroundTint="@color/colorPink"
+                android:gravity="center"
+                android:textAllCaps="false"
+                android:fontFamily="@font/leckerlione_regular"
+
+                android:text="@string/register"
+                android:textColor="@color/colorWhite"
+                android:textSize="@dimen/_20sdp" />
+
+            <Button
+                android:id="@+id/btnRegisterPageLogin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="@dimen/_15sdp"
+                android:background="@drawable/button_capsule"
+                android:backgroundTint="@color/colorOrangeLight"
+                android:gravity="center"
+                android:text="@string/login"
+                android:textAllCaps="false"
+                android:fontFamily="@font/leckerlione_regular"
+                android:textColor="@color/colorWhite"
+                android:textSize="@dimen/_20sdp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

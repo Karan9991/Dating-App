@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.Activity.SupportActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbarSupport"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@color/colorPrimary"
+        android:elevation="6dp"
+        android:theme="@style/ToolbarTheme"
+        app:contentInsetLeft="0dp"
+        app:contentInsetStart="0dp"
+        app:contentInsetStartWithNavigation="0dp"
+        app:titleTextColor="@color/colorBlack">
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:focusableInTouchMode="true"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+
+            <TextView
+                android:fontFamily="@font/leckerlione_regular"
+                android:id="@+id/textViewSupportContent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="20dp"
+                android:text="@string/msg_support"
+                android:textSize="18sp" />
+
+            <CheckBox
+                android:textColor="@color/colorPink"
+                android:buttonTint="@color/colorPink"
+                android:id="@+id/checkBoxSupportDifficult"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/difficulttouse" />
+
+            <CheckBox
+                android:textColor="@color/colorPink"
+                android:buttonTint="@color/colorPink"
+                android:id="@+id/checkBoxSupportFriends"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/notmakeanyfriendsofar" />
+
+            <CheckBox
+                android:textColor="@color/colorPink"
+                android:buttonTint="@color/colorPink"
+                android:id="@+id/checkBoxSupportFreezes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/msg_tooslow" />
+
+            <CheckBox
+                android:textColor="@color/colorPink"
+                android:buttonTint="@color/colorPink"
+                android:id="@+id/checkBoxSupportNotify"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/msg_unconfortable" />
+
+            <CheckBox
+                android:textColor="@color/colorPink"
+                android:buttonTint="@color/colorPink"
+                android:id="@+id/checkBoxSupportEnjoy"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/msg_liketheapp" />
+
+            <TextView
+                android:textColor="@color/colorPink"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="@string/msg_howweimporve" />
+
+            <EditText
+                android:id="@+id/editTextSupportOther"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="20dp"
+                android:fontFamily="@font/leckerlione_regular"
+                android:textColorHint="@color/colorWhite"
+                android:textColor="@color/colorWhite"
+                android:background="@color/colorPink"
+                android:gravity="top"
+                android:hint="@string/msg_youridea"
+                android:minLines="5"
+                android:padding="15dp" />
+
+            <Button
+                android:background="@drawable/login_bubble2"
+                android:id="@+id/buttonSupportButton"
+                android:textColor="@color/colorWhite"
+                android:fontFamily="@font/leckerlione_regular"
+                android:textAllCaps="false"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/send" />
+
+
+        </LinearLayout>
+
+
+    </androidx.core.widget.NestedScrollView>
+
+
+</LinearLayout>

@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+        tools:context=".ui.Activity.RegisterActivity">
+
+    <RelativeLayout
+        android:orientation="vertical"
+        style="@style/loginParent"
+        >
+        <ScrollView
+            style="@style/parent">
+
+            <RelativeLayout
+                style="@style/parent">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentTop="true"
+                    android:weightSum="12">
+
+                    <LinearLayout
+                        style="@style/parent"
+                        android:background="@drawable/bubble"
+                        android:orientation="vertical"
+                        android:layout_weight="3">
+
+                        <ImageView
+                            style="@style/parent"
+                            android:background="@drawable/ic_login_bk"
+                            android:contentDescription="login background" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentTop="true"
+                    android:orientation="vertical"
+                    android:layout_marginTop="40dp"
+                    android:layout_marginRight="23dp"
+                    android:layout_marginLeft="23dp">
+
+<!--                    <ImageView-->
+<!--                        android:layout_width="@dimen/_50sdp"-->
+<!--                        android:layout_height="@dimen/_50sdp"-->
+<!--                        android:src="@drawable/datingr"-->
+<!--                        android:layout_gravity="center"/>-->
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:textColor="@color/colorWhite"
+                        android:text=" Dating!"
+                        android:fontFamily="@font/leckerlione_regular"
+                        android:textStyle="italic"
+                        android:layout_marginBottom="22dp"
+                        android:textSize="@dimen/_30sdp"
+                        android:layout_marginTop="7dp"/>
+                    <include
+                        layout="@layout/layout_register"/>
+
+                </LinearLayout>
+                <!--                <ImageView-->
+                <!--                    android:layout_width="wrap_content"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    android:layout_alignParentLeft="true"-->
+                <!--                    android:layout_alignParentTop="true"-->
+                <!--                    android:layout_marginTop="30dp"-->
+                <!--                    android:layout_marginLeft="10dp"-->
+                <!--                    android:src="@android:drawable/ic_menu_close_clear_cancel" />-->
+            </RelativeLayout>
+
+        </ScrollView>
+
+    </RelativeLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <!--<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--    xmlns:tools="http://schemas.android.com/tools"-->
+<!--    android:layout_width="match_parent"-->
+<!--    android:layout_height="match_parent"-->
+<!--    tools:context=".ui.Activity.RegisterActivity">-->
+<!--        <androidx.core.widget.NestedScrollView-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent">-->
+
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_gravity="top"-->
+<!--                android:orientation="vertical"-->
+<!--                android:padding="@dimen/_20sdp">-->
+
+<!--                <ImageView-->
+<!--                    android:layout_width="@dimen/_150sdp"-->
+<!--                    android:layout_height="@dimen/_150sdp"-->
+<!--                    android:layout_gravity="center"-->
+<!--                    android:src="@drawable/datingr"-->
+<!--                    />-->
+
+<!--                &lt;!&ndash;            <TextView&ndash;&gt;-->
+<!--                &lt;!&ndash;                android:id="@+id/textViewRegisterTitle"&ndash;&gt;-->
+<!--                &lt;!&ndash;                android:layout_width="match_parent"&ndash;&gt;-->
+<!--                &lt;!&ndash;                android:layout_height="wrap_content"&ndash;&gt;-->
+<!--                &lt;!&ndash;                android:layout_marginTop="@dimen/_10sdp"&ndash;&gt;-->
+<!--                &lt;!&ndash;                android:layout_marginBottom="@dimen/_20sdp"&ndash;&gt;-->
+<!--                &lt;!&ndash;                android:text="@string/dating"&ndash;&gt;-->
+<!--                &lt;!&ndash;                android:textColorHint="@color/colorOrange"&ndash;&gt;-->
+<!--                &lt;!&ndash;                android:textAlignment="center"&ndash;&gt;-->
+<!--                &lt;!&ndash;                android:textColor="@color/colorPink"&ndash;&gt;-->
+<!--                &lt;!&ndash;                android:textSize="@dimen/_30sdp"&ndash;&gt;-->
+<!--                &lt;!&ndash;                android:textStyle="bold" />&ndash;&gt;-->
+
+
+<!--                <EditText-->
+<!--                    android:id="@+id/editTextRegisterName"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:textColorHint="@color/colorPink"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginBottom="10dp"-->
+<!--                    android:background="@drawable/edittext_capsule"-->
+<!--                    android:hint="@string/firstname"-->
+<!--                    android:inputType="textCapWords"-->
+<!--                    android:padding="@dimen/_15sdp"-->
+<!--                    android:textColor="@color/colorPink"-->
+<!--                    android:textStyle="bold" />-->
+
+<!--                <RadioGroup-->
+<!--                    android:id="@+id/radioGroupRegisterGender"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginBottom="@dimen/_10sdp"-->
+<!--                    android:orientation="horizontal">-->
+
+<!--                    <RadioButton-->
+<!--                        android:id="@+id/radioRegisterMale"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:background="@android:color/transparent"-->
+<!--                        android:buttonTint="@color/colorPink"-->
+<!--                        android:onClick="radioButtonRegisterGender"-->
+<!--                        android:text="@string/male"-->
+<!--                        android:textColor="@color/colorPink"-->
+<!--                        android:textSize="@dimen/_15ssp"-->
+<!--                        android:textStyle="bold" />-->
+
+<!--                    <RadioButton-->
+<!--                        android:id="@+id/radioRegisterFemale"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_marginStart="50dp"-->
+<!--                        android:layout_marginLeft="@dimen/_40sdp"-->
+<!--                        android:background="@android:color/transparent"-->
+<!--                        android:buttonTint="@color/colorPink"-->
+<!--                        android:onClick="radioButtonRegisterGender"-->
+<!--                        android:text="@string/female"-->
+<!--                        android:textColor="@color/colorPink"-->
+<!--                        android:textSize="@dimen/_15ssp"-->
+<!--                        android:textStyle="bold" />-->
+
+<!--                </RadioGroup>-->
+
+
+<!--                <TextView-->
+<!--                    android:id="@+id/textViewRegisterBirthday"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginBottom="@dimen/_10sdp"-->
+<!--                    android:background="@drawable/edittext_capsule"-->
+<!--                    android:hint="@string/birthday"-->
+<!--                    android:inputType="none"-->
+<!--                    android:padding="15dp"-->
+<!--                    android:textColor="@color/colorPink"-->
+<!--                    android:textColorHint="@color/colorPink"-->
+<!--                    android:textSize="@dimen/_15ssp"-->
+<!--                    android:textStyle="bold" />-->
+
+<!--                <EditText-->
+<!--                    android:id="@+id/editTextRegisterEmail"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:textColorHint="@color/colorPink"-->
+<!--                    android:layout_marginBottom="@dimen/_10sdp"-->
+<!--                    android:background="@drawable/edittext_capsule"-->
+<!--                    android:hint="@string/email"-->
+<!--                    android:inputType="textEmailAddress"-->
+<!--                    android:padding="@dimen/_15ssp"-->
+<!--                    android:textColor="@color/colorPink"-->
+<!--                    android:textStyle="bold" />-->
+
+
+<!--                <EditText-->
+<!--                    android:id="@+id/editTextRegisterPassword"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginBottom="@dimen/_30sdp"-->
+<!--                    android:background="@drawable/edittext_capsule"-->
+<!--                    android:hint="@string/password"-->
+<!--                    android:textColorHint="@color/colorPink"-->
+<!--                    android:inputType="textPassword"-->
+<!--                    android:padding="@dimen/_15ssp"-->
+<!--                    android:textColor="@color/colorPink"-->
+<!--                    android:textStyle="bold" />-->
+
+
+<!--                <Button-->
+<!--                    android:id="@+id/btnRegisterPageRegister"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_centerHorizontal="true"-->
+<!--                    android:layout_marginBottom="@dimen/_10sdp"-->
+<!--                    android:background="@drawable/button_capsule"-->
+<!--                    android:backgroundTint="@color/colorPink"-->
+<!--                    android:gravity="center"-->
+<!--                    android:text="@string/register"-->
+<!--                    android:textColor="@color/colorWhite"-->
+<!--                    android:textSize="@dimen/_15ssp" />-->
+
+<!--                <Button-->
+<!--                    android:id="@+id/btnRegisterPageLogin"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_centerHorizontal="true"-->
+<!--                    android:layout_marginBottom="@dimen/_40sdp"-->
+<!--                    android:background="@drawable/button_capsule"-->
+<!--                    android:backgroundTint="@color/colorOrangeLight"-->
+<!--                    android:gravity="center"-->
+<!--                    android:text="@string/login"-->
+<!--                    android:textColor="@color/colorWhite"-->
+<!--                    android:textSize="@dimen/_15ssp" />-->
+
+<!--            </LinearLayout>-->
+
+<!--        </androidx.core.widget.NestedScrollView>-->
+
+
+
+<!--</LinearLayout>-->

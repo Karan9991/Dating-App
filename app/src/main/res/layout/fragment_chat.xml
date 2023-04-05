@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.Fragments.ProfileFragment">
+
+    <LinearLayout
+        android:id="@+id/linearLayoutChatsContent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="visible">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerViewChatsView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            android:paddingBottom="@dimen/_50sdp">
+
+        </androidx.recyclerview.widget.RecyclerView>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/linearLayoutChatsEmpty"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_vertical|center"
+        android:orientation="vertical"
+        android:padding="@dimen/_20sdp"
+        android:visibility="gone">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/_30sdp"
+            android:src="@drawable/baseline_chat" />
+
+        <TextView
+            android:fontFamily="@font/leckerlione_regular"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorBlack"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:text="@string/sendnewmessage"
+            android:textAlignment="center"
+            android:textSize="@dimen/_20sdp" />
+
+        <TextView
+            android:fontFamily="@font/leckerlione_regular"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/msg"
+            android:textAlignment="center"
+            android:textColor="@color/colorPink"
+            android:textSize="@dimen/_17ssp" />
+
+    </LinearLayout>
+
+
+</RelativeLayout>

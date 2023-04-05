@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.Activity.ReportActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbarReport"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@color/colorPrimary"
+        android:elevation="6dp"
+        android:theme="@style/ToolbarTheme"
+        app:contentInsetLeft="0dp"
+        app:contentInsetStart="0dp"
+        app:contentInsetStartWithNavigation="0dp"
+        app:titleTextColor="@color/colorBlack">
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:focusableInTouchMode="true"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+
+            <TextView
+                android:fontFamily="@font/leckerlione_regular"
+                android:id="@+id/textViewProfileReportContent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="20dp"
+                android:text="@string/msg_report"
+                android:textSize="18sp" />
+
+            <CheckBox
+                android:textColor="@color/colorPink"
+                android:buttonTint="@color/colorPink"
+                android:id="@+id/checkBoxProfileReportFake"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/msg_fakeprofile" />
+
+            <CheckBox
+                android:textColor="@color/colorPink"
+                android:buttonTint="@color/colorPink"
+                android:id="@+id/checkBoxProfileReportPhotos"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/msg_photo" />
+
+            <CheckBox
+                android:textColor="@color/colorPink"
+                android:buttonTint="@color/colorPink"
+                android:id="@+id/checkBoxProfileReportSpam"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/msg_spam" />
+
+            <CheckBox
+                android:textColor="@color/colorPink"
+                android:buttonTint="@color/colorPink"
+                android:id="@+id/checkBoxProfileReportAdverts"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/msg_adv" />
+
+            <CheckBox
+                android:textColor="@color/colorPink"
+                android:buttonTint="@color/colorPink"
+                android:id="@+id/checkBoxProfileReportAdult"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/msg_sdultcontent" />
+
+            <CheckBox
+                android:textColor="@color/colorPink"
+                android:buttonTint="@color/colorPink"
+                android:id="@+id/checkBoxProfileReportOffence"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/msg_personal" />
+
+            <CheckBox
+                android:textColor="@color/colorPink"
+                android:buttonTint="@color/colorPink"
+                android:id="@+id/checkBoxProfileReportAbusive"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Abusive Language" />
+
+            <CheckBox
+                android:textColor="@color/colorPink"
+                android:buttonTint="@color/colorPink"
+                android:id="@+id/checkBoxProfileReportReligious"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/msg_religious" />
+
+            <CheckBox
+                android:textColor="@color/colorPink"
+                android:buttonTint="@color/colorPink"
+                android:id="@+id/checkBoxProfileReportUnderage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/msg_underage" />
+
+            <EditText
+                android:fontFamily="@font/leckerlione_regular"
+                android:id="@+id/editTextProfileReportOther"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="20dp"
+                android:background="@color/colorOrangeLight"
+                android:gravity="top"
+                android:hint="@string/msg_otherreson"
+                android:minLines="5"
+                android:padding="15dp"
+                android:textColor="@color/colorWhite"
+                android:textColorHint="@color/colorWhite" />
+
+            <Button
+                android:fontFamily="@font/leckerlione_regular"
+                android:background="@drawable/login_bubble2"
+                android:textColor="@color/colorWhite"
+                android:textAllCaps="false"
+                android:id="@+id/buttonProfileReportButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/repor" />
+
+
+        </LinearLayout>
+
+
+    </androidx.core.widget.NestedScrollView>
+
+
+</LinearLayout>
