@@ -1,14 +1,14 @@
 <component name="libraryTable">
   <library name="Gradle: com.firebaseui:firebase-ui-firestore:4.0.1@aar">
     <CLASSES>
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/50bdb463baf4426001893f45094e0829/jetified-firebase-ui-firestore-4.0.1/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/50bdb463baf4426001893f45094e0829/jetified-firebase-ui-firestore-4.0.1/AndroidManifest.xml" />
+      <root url="file://$PROJECT_DIR$/../loggenda-master/gradle/caches/transforms-2/files-2.1/fcb82c4d43ad7128b921a99fbef199bb/jetified-firebase-ui-firestore-4.0.1/AndroidManifest.xml" />
+      <root url="jar://$PROJECT_DIR$/../loggenda-master/gradle/caches/transforms-2/files-2.1/fcb82c4d43ad7128b921a99fbef199bb/jetified-firebase-ui-firestore-4.0.1/jars/classes.jar!/" />
     </CLASSES>
     <JAVADOC>
-      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.firebaseui/firebase-ui-firestore/4.0.1/1c2a0b2dedca07ee3f51984e0e06262b4d6f6e42/firebase-ui-firestore-4.0.1-javadoc.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../loggenda-master/gradle/caches/modules-2/files-2.1/com.firebaseui/firebase-ui-firestore/4.0.1/1c2a0b2dedca07ee3f51984e0e06262b4d6f6e42/firebase-ui-firestore-4.0.1-javadoc.jar!/" />
     </JAVADOC>
     <SOURCES>
-      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.firebaseui/firebase-ui-firestore/4.0.1/ac16abc1c93810e4ce800f996f617765e465602/firebase-ui-firestore-4.0.1-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../loggenda-master/gradle/caches/modules-2/files-2.1/com.firebaseui/firebase-ui-firestore/4.0.1/ac16abc1c93810e4ce800f996f617765e465602/firebase-ui-firestore-4.0.1-sources.jar!/" />
     </SOURCES>
   </library>
 </component>

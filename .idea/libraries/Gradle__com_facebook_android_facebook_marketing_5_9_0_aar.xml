@@ -1,14 +1,14 @@
 <component name="libraryTable">
   <library name="Gradle: com.facebook.android:facebook-marketing:5.9.0@aar">
     <CLASSES>
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/1d112f19cbd69df5664a040bf6d7fff7/jetified-facebook-marketing-5.9.0/AndroidManifest.xml" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/1d112f19cbd69df5664a040bf6d7fff7/jetified-facebook-marketing-5.9.0/jars/classes.jar!/" />
+      <root url="file://$PROJECT_DIR$/../loggenda-master/gradle/caches/transforms-2/files-2.1/7e3748f989a6505a215d58e037a5bb54/jetified-facebook-marketing-5.9.0/AndroidManifest.xml" />
+      <root url="jar://$PROJECT_DIR$/../loggenda-master/gradle/caches/transforms-2/files-2.1/7e3748f989a6505a215d58e037a5bb54/jetified-facebook-marketing-5.9.0/jars/classes.jar!/" />
     </CLASSES>
     <JAVADOC>
-      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.facebook.android/facebook-marketing/5.9.0/bff33044b59e74d61cad81f98e378bccabf8627d/facebook-marketing-5.9.0-javadoc.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../loggenda-master/gradle/caches/modules-2/files-2.1/com.facebook.android/facebook-marketing/5.9.0/bff33044b59e74d61cad81f98e378bccabf8627d/facebook-marketing-5.9.0-javadoc.jar!/" />
     </JAVADOC>
     <SOURCES>
-      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.facebook.android/facebook-marketing/5.9.0/1f66417cb299e8e2d2fa79f7d2706ed27e06756/facebook-marketing-5.9.0-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../loggenda-master/gradle/caches/modules-2/files-2.1/com.facebook.android/facebook-marketing/5.9.0/1f66417cb299e8e2d2fa79f7d2706ed27e06756/facebook-marketing-5.9.0-sources.jar!/" />
     </SOURCES>
   </library>
 </component>

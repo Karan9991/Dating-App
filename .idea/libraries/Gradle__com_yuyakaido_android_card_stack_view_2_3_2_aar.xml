@@ -1,15 +1,15 @@
 <component name="libraryTable">
   <library name="Gradle: com.yuyakaido.android:card-stack-view:2.3.2@aar">
     <CLASSES>
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/d9d52c73ffe5f6c9f8f8ec5598c9bcbf/jetified-card-stack-view-2.3.2/AndroidManifest.xml" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/d9d52c73ffe5f6c9f8f8ec5598c9bcbf/jetified-card-stack-view-2.3.2/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/d9d52c73ffe5f6c9f8f8ec5598c9bcbf/jetified-card-stack-view-2.3.2/res" />
+      <root url="file://$PROJECT_DIR$/../loggenda-master/gradle/caches/transforms-2/files-2.1/37d48a6d7650d738ac6ac9521f2e2f77/jetified-card-stack-view-2.3.2/AndroidManifest.xml" />
+      <root url="jar://$PROJECT_DIR$/../loggenda-master/gradle/caches/transforms-2/files-2.1/37d48a6d7650d738ac6ac9521f2e2f77/jetified-card-stack-view-2.3.2/jars/classes.jar!/" />
+      <root url="file://$PROJECT_DIR$/../loggenda-master/gradle/caches/transforms-2/files-2.1/37d48a6d7650d738ac6ac9521f2e2f77/jetified-card-stack-view-2.3.2/res" />
     </CLASSES>
     <JAVADOC>
-      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.yuyakaido.android/card-stack-view/2.3.2/fb923185ea886d16f206b62d36d66eadf04d06a6/card-stack-view-2.3.2-javadoc.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../loggenda-master/gradle/caches/modules-2/files-2.1/com.yuyakaido.android/card-stack-view/2.3.2/fb923185ea886d16f206b62d36d66eadf04d06a6/card-stack-view-2.3.2-javadoc.jar!/" />
     </JAVADOC>
     <SOURCES>
-      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.yuyakaido.android/card-stack-view/2.3.2/27c0c1f6f3188f09f8e5f359ed8e2e9f1654fe84/card-stack-view-2.3.2-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../loggenda-master/gradle/caches/modules-2/files-2.1/com.yuyakaido.android/card-stack-view/2.3.2/27c0c1f6f3188f09f8e5f359ed8e2e9f1654fe84/card-stack-view-2.3.2-sources.jar!/" />
     </SOURCES>
   </library>
 </component>

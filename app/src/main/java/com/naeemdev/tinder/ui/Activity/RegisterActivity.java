@@ -266,7 +266,7 @@ public class RegisterActivity extends AppCompatActivity implements DatePickerDia
         String strDate = dayOfMonth + "-"+month+"-"+year+"";
 
 
-        if (year > 2000) {
+        if (year > 2004) {
             Toast.makeText(this,
                     "Sorry! you dont meet our user registration minimum age limits policy now. Please register with us after some time. Thank you for trying our app now!",
                     Toast.LENGTH_LONG).show();
