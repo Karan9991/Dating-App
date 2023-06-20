@@ -31,13 +31,21 @@ public class LoginActivity extends AppCompatActivity {
     private EditText loginPass;
     private Button btnLoginPageLogin;
     private Button btnLoginPageRegister;
+    FirebaseUser firebaseUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
 
         userAuth = FirebaseAuth.getInstance();
+        firebaseUser = userAuth.getCurrentUser();
+
+        if (firebaseUser != null) {
+            startActivity(new Intent(this, MainActivity.class));
+        } else {
+
+        setContentView(R.layout.activity_login);
+
 
         loginEmail = findViewById(R.id.loginEmailText);
         loginPass = findViewById(R.id.loginPassText);
@@ -53,7 +61,7 @@ public class LoginActivity extends AppCompatActivity {
         forgotPasswordLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               //pop up bottom sheet
+                //pop up bottom sheet
                 showForgotPasswordBottomSheet();
             }
         });
@@ -102,6 +110,7 @@ public class LoginActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
     }
 
 

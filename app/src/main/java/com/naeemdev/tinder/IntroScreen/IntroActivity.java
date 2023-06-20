@@ -25,6 +25,8 @@ import androidx.core.app.ActivityCompat;
 import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.tabs.TabLayout;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.naeemdev.tinder.R;
 import com.naeemdev.tinder.IntroScreen.SplashScreen;
 import com.naeemdev.tinder.ui.Activity.LoginActivity;
@@ -43,6 +45,8 @@ public class IntroActivity extends AppCompatActivity {
     Button btnGetStarted;
     Animation btnAnim ;
     TextView tvSkip;
+    FirebaseUser firebaseUser;
+    FirebaseAuth firebaseAuth;
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 100;
 
 
@@ -55,6 +59,8 @@ public class IntroActivity extends AppCompatActivity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
+
 
         // when this activity is about to be launch we need to check if its openened before or not
         if (restorePrefData()) {
