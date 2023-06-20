@@ -1,7 +1,13 @@
 package com.naeemdev.tinder.IntroScreen;
 
+import android.Manifest;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
+import android.location.Location;
+import android.location.LocationManager;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
@@ -10,8 +16,12 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.tabs.TabLayout;
@@ -33,6 +43,7 @@ public class IntroActivity extends AppCompatActivity {
     Button btnGetStarted;
     Animation btnAnim ;
     TextView tvSkip;
+    private static final int LOCATION_PERMISSION_REQUEST_CODE = 100;
 
 
     @Override
@@ -146,10 +157,13 @@ public class IntroActivity extends AppCompatActivity {
             public void onClick(View v) {
 
 
+             //   ActivityCompat.requestPermissions(IntroActivity.this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, LOCATION_PERMISSION_REQUEST_CODE);
+
+
                 //open main activity
 
-                Intent mainActivity = new Intent(getApplicationContext(), LoginActivity.class);
-                startActivity(mainActivity);
+//                Intent mainActivity = new Intent(getApplicationContext(), LoginActivity.class);
+//                startActivity(mainActivity);
                 // also we need to save a boolean value to storage so next time when the user run the app
                 // we could know that he is already checked the intro screen activity
                 // i'm going to use shared preferences to that process
@@ -205,4 +219,110 @@ public class IntroActivity extends AppCompatActivity {
 
 
     }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == LOCATION_PERMISSION_REQUEST_CODE) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                // Permission granted, fetch user's location
+                fetchUserLocation();
+            } else {
+                // Permission denied, show dialog or toast informing the user about the location requirement
+                showLocationPermissionDeniedDialog();
+            }
+        }
+    }
+    private void fetchUserLocation() {
+        LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+        if (locationManager != null) {
+            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED &&
+                    ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+                // Get the last known location
+                Location location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+                if (location != null) {
+                    double latitude = location.getLatitude();
+                    double longitude = location.getLongitude();
+                    // Check if the user's location is within the specific circle of the target region (Halifax)
+                    if (isLocationInHalifax(latitude, longitude)) {
+                        // User is in Halifax, proceed with sign up
+                        Toast.makeText(getApplicationContext(), "User is in Halifax", Toast.LENGTH_SHORT).show();
+                      //  showSignUpActivity();
+                    } else {
+                        // User is not in Halifax, show dialog or toast informing the user about the restriction
+                        showLocationRestrictionDialog();
+                    }
+                } else {
+                    // Location not available, show dialog or toast informing the user about the location unavailability
+                    showLocationUnavailableDialog();
+                }
+            } else {
+                // Location permission not granted, show dialog or toast informing the user about the permission requirement
+                showLocationPermissionDeniedDialog();
+            }
+        }
+    }
+    private boolean isLocationInHalifax(double latitude, double longitude) {
+        double halifaxLatitude = 28.653625; // Latitude of Halifax city 44.649381, -63.593002 44.723765, -63.711132
+        double halifaxLongitude = 77.141284; // Longitude of Halifax city 44.661144, -63.644245
+
+
+        double radius = 25.0; // Radius of the circle in kilometers
+
+        // Calculate the distance between the user's location and the center of the circle
+        float[] distance = new float[1];
+        Location.distanceBetween(latitude, longitude, halifaxLatitude, halifaxLongitude, distance);
+        double distanceInKm = distance[0] / 1000.0; // Convert distance to kilometers
+
+        // Check if the distance is within the radius of the circle
+        return distanceInKm <= radius;
+    }
+
+    private void showLocationRestrictionDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("This App is not available in your area")
+                .setMessage("This app is only available for Delhi users.")
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+
+        AlertDialog dialog = builder.create();
+        dialog.show();
+    }
+
+    private void showLocationPermissionDeniedDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Location Permission Denied")
+                .setMessage("This app requires location permission to determine your eligibility. Please grant location permission to sign up.")
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        dialog.dismiss();
+                    }
+                });
+
+        AlertDialog dialog = builder.create();
+        dialog.show();
+    }
+
+    private void showLocationUnavailableDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Location Unavailable")
+                .setMessage("Unable to retrieve your location. Please make sure location services are enabled on your device.")
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+
+        AlertDialog dialog = builder.create();
+        dialog.show();
+    }
+
+
 }

@@ -7,6 +7,7 @@
     <string name="facebook_app_id">331875347481475</string>
     <string name="fb_login_protocol_scheme">fb331875347481475</string>
     <string name="email">Email</string>
+    <string name="forgot_email">Enter your Email</string>
     <string name="password">Password</string>
     <string name="login">Login</string>
     <string name="register">Sign Up</string>
@@ -115,6 +116,7 @@
     <string name="msg_underage">User is Underage</string>
     <string name="msg_otherreson">Other Reason</string>
     <string name="repor">Report</string>
+    <string name="reset_password">Reset Password</string>
     <string name="msg_completeprofile">Complete Profile</string>
     <string name="finished">Finish</string>
     <string name="msg_login">By logging in you agree to DatingApp\'s Terms of Service and Privacy Policy.</string>
