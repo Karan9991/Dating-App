@@ -18,6 +18,8 @@ import androidx.appcompat.widget.Toolbar;
 import com.crystal.crystalrangeseekbar.interfaces.OnRangeSeekbarChangeListener;
 import com.crystal.crystalrangeseekbar.widgets.CrystalRangeSeekbar;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -55,6 +57,7 @@ public class SettingsActivity extends AppCompatActivity {
     LinearLayout linearLayoutSettingsNotify;
 
     Button buttonSettingsAccountLogout;
+    Button buttonSettingsDeleteAccount;
 
     CrystalRangeSeekbar seekbarSettingsAgeRange;
     TextView textViewSettingsGender;
@@ -120,6 +123,7 @@ public class SettingsActivity extends AppCompatActivity {
         linearLayoutSettingsNotify = findViewById(R.id.linearLayoutSettingsNotify);
 
         buttonSettingsAccountLogout = findViewById(R.id.buttonSettingsAccountLogout);
+        buttonSettingsDeleteAccount = findViewById(R.id.buttonSettingsDeleteAccount);
 
 
         seekbarSettingsAgeRange = findViewById(R.id.seekbarSettingsAgeRange);
@@ -304,10 +308,32 @@ public class SettingsActivity extends AppCompatActivity {
                 Toast.makeText(SettingsActivity.this,
                         "You are logged out!", Toast.LENGTH_SHORT).show();
 
-                Intent intent = new Intent(SettingsActivity.this, StartActivity.class);
+                Intent intent = new Intent(SettingsActivity.this, LoginActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
                 finish();
+            }
+        });
+
+        buttonSettingsDeleteAccount.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(SettingsActivity.this);
+                builder.setTitle("Confirm Account Deletion")
+                        .setMessage("Are you sure you want to delete your account?")
+                        .setPositiveButton("Delete", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                deleteAccount();
+                            }
+                        })
+                        .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                // User clicked the "Cancel" button, do nothing
+                            }
+                        })
+                        .show();
             }
         });
 
@@ -588,4 +614,50 @@ public class SettingsActivity extends AppCompatActivity {
                 });
 
     }
+
+    private void deleteAccount() {
+        final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user != null) {
+            // Delete the Firestore data
+            FirebaseFirestore.getInstance().collection("users")
+                    .document(user.getUid())
+                    .delete()
+                    .addOnSuccessListener(new OnSuccessListener<Void>() {
+                        @Override
+                        public void onSuccess(Void aVoid) {
+                            // Firestore data deleted successfully, now delete the user account
+                            user.delete()
+                                    .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<Void> task) {
+                                            if (task.isSuccessful()) {
+                                                // Account deleted successfully
+                                                Toast.makeText(SettingsActivity.this, "Account deleted successfully.", Toast.LENGTH_SHORT).show();
+                                                navigateToLoginActivity();
+                                                // Perform any additional actions or navigation as needed
+                                            } else {
+                                                // Failed to delete the account
+                                                Toast.makeText(SettingsActivity.this, "Failed to delete account.", Toast.LENGTH_SHORT).show();
+                                            }
+                                        }
+                                    });
+                        }
+                    })
+                    .addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            // Failed to delete Firestore data
+                            Toast.makeText(SettingsActivity.this, "Failed to delete Firestore data.", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+        }
+    }
+
+    private void navigateToLoginActivity() {
+        Intent intent = new Intent(SettingsActivity.this, LoginActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
+        finish();
+    }
+
 }

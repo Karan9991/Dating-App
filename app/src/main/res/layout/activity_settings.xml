@@ -137,18 +137,17 @@
             </LinearLayout>
 
 
+            <!-- Lookage for -->
             <TextView
-                android:fontFamily="@font/leckerlione_regular"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/leckerlione_regular"
                 android:padding="@dimen/_20sdp"
                 android:text="@string/discovery"
                 android:textColor="@color/colorWhite"
                 android:textSize="@dimen/_16ssp"
                 android:textStyle="bold" />
 
-
-            <!-- Lookage for -->
             <LinearLayout
                 android:id="@+id/linearLayoutAgeRange"
                 android:layout_width="match_parent"
@@ -531,6 +530,21 @@
                 android:padding="25dp"
                 android:textAllCaps="false"
                 android:text="@string/logout"
+                android:textSize="@dimen/_14ssp"
+                android:textStyle="bold" />
+
+            <Button
+                android:fontFamily="@font/leckerlione_regular"
+                android:textColor="@color/whiteCardColor"
+                android:id="@+id/buttonSettingsDeleteAccount"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginBottom="50dp"
+                android:backgroundTint="@color/colorBlack"
+                android:padding="25dp"
+                android:textAllCaps="false"
+                android:text="@string/deleteaccount"
                 android:textSize="@dimen/_14ssp"
                 android:textStyle="bold" />
 

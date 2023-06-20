@@ -58,7 +58,7 @@
                         android:layout_height="match_parent"
                         android:layout_gravity="center"
                         android:textColor="@color/colorWhite"
-                        android:text=" Dating!"
+                        android:text="Delhi Dating!"
                         android:fontFamily="@font/leckerlione_regular"
                         android:textStyle="italic"
                         android:layout_marginBottom="22dp"
