@@ -7,6 +7,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -42,6 +43,14 @@ public class LoginActivity extends AppCompatActivity {
         dialog = new ProgressDialog(LoginActivity.this);
         dialog.setMessage("Loading...");
         dialog.setCancelable(false);
+
+        RelativeLayout forgotPasswordLayout = findViewById(R.id.forgotPasswordLayout);
+        forgotPasswordLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+               //pop up bottom sheet
+            }
+        });
 
         btnLoginPageLogin.setOnClickListener(new View.OnClickListener() {
             @Override

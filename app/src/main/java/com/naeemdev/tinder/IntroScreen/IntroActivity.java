@@ -17,6 +17,8 @@ import androidx.viewpager.widget.ViewPager;
 import com.google.android.material.tabs.TabLayout;
 import com.naeemdev.tinder.R;
 import com.naeemdev.tinder.IntroScreen.SplashScreen;
+import com.naeemdev.tinder.ui.Activity.LoginActivity;
+import com.naeemdev.tinder.ui.Activity.MainActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -46,7 +48,7 @@ public class IntroActivity extends AppCompatActivity {
         // when this activity is about to be launch we need to check if its openened before or not
         if (restorePrefData()) {
 
-            Intent mainActivity = new Intent(getApplicationContext(), SplashScreen.class );
+            Intent mainActivity = new Intent(getApplicationContext(), LoginActivity.class );
             startActivity(mainActivity);
             finish();
 
@@ -146,7 +148,7 @@ public class IntroActivity extends AppCompatActivity {
 
                 //open main activity
 
-                Intent mainActivity = new Intent(getApplicationContext(), SplashScreen.class);
+                Intent mainActivity = new Intent(getApplicationContext(), LoginActivity.class);
                 startActivity(mainActivity);
                 // also we need to save a boolean value to storage so next time when the user run the app
                 // we could know that he is already checked the intro screen activity
