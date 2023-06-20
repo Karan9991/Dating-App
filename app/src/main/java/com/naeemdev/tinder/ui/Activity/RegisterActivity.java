@@ -6,12 +6,22 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
 import android.location.LocationManager;
+import android.net.Uri;
 import android.os.Bundle;
+import android.text.SpannableStringBuilder;
+import android.text.Spanned;
+import android.text.TextPaint;
 import android.text.TextUtils;
+import android.text.method.LinkMovementMethod;
+import android.text.style.ClickableSpan;
+import android.text.style.ForegroundColorSpan;
+import android.text.style.StyleSpan;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -77,6 +87,7 @@ public class RegisterActivity extends AppCompatActivity implements DatePickerDia
     private TextView textViewRegisterBirthday;
     private FusedLocationProviderClient fusedLocationProviderClient;
     private LocationRequest locationRequest;
+    private TextView termsTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,6 +97,7 @@ public class RegisterActivity extends AppCompatActivity implements DatePickerDia
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseFirestore = FirebaseFirestore.getInstance();
 
+        termsTextView = findViewById(R.id.termsTextView);
         btnRegisterPageRegister = findViewById(R.id.btnRegisterPageRegister);
         btnRegisterPageLogin = findViewById(R.id.btnRegisterPageLogin);
 
@@ -235,6 +247,50 @@ public class RegisterActivity extends AppCompatActivity implements DatePickerDia
 
             }
         });
+
+
+        String fullText = "By Signing up you agree with Privacy Policy and Terms of Use";
+        SpannableStringBuilder spannableStringBuilder = new SpannableStringBuilder(fullText);
+
+        // Set the ClickableSpan for the "privacy policy" text
+        ClickableSpan privacyPolicyClickSpan = new ClickableSpan() {
+            @Override
+            public void onClick(View widget) {
+                openWebPage("https://doc-hosting.flycricket.io/delhi-dating-privacy-policy/4e1e9ec1-c0bf-4f30-b29c-27138acad037/privacy");
+            }
+            @Override
+            public void updateDrawState(TextPaint ds) {
+                super.updateDrawState(ds);
+                ds.setUnderlineText(false); // Remove underline
+            }
+        };
+        int privacyPolicyStartIndex = fullText.indexOf("Privacy Policy");
+        int privacyPolicyEndIndex = privacyPolicyStartIndex + "Privacy Policy".length();
+        spannableStringBuilder.setSpan(privacyPolicyClickSpan, privacyPolicyStartIndex, privacyPolicyEndIndex, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        spannableStringBuilder.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.main_orange_color)), privacyPolicyStartIndex, privacyPolicyEndIndex, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        spannableStringBuilder.setSpan(new StyleSpan(Typeface.BOLD), privacyPolicyStartIndex, privacyPolicyEndIndex, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+
+        // Set the ClickableSpan for the "terms of use" text
+        ClickableSpan termsOfUseClickSpan = new ClickableSpan() {
+            @Override
+            public void onClick(View widget) {
+                openWebPage("https://doc-hosting.flycricket.io/delhi-dating-terms-of-use/73b7f589-5a29-48f7-8d7a-dedbe15335bb/terms");
+            }
+            @Override
+            public void updateDrawState(TextPaint ds) {
+                super.updateDrawState(ds);
+                ds.setUnderlineText(false); // Remove underline
+            }
+        };
+        int termsOfUseStartIndex = fullText.indexOf("Terms of Use");
+        int termsOfUseEndIndex = termsOfUseStartIndex + "Terms of Use".length();
+        spannableStringBuilder.setSpan(termsOfUseClickSpan, termsOfUseStartIndex, termsOfUseEndIndex, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        spannableStringBuilder.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.main_orange_color)), termsOfUseStartIndex, termsOfUseEndIndex, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        spannableStringBuilder.setSpan(new StyleSpan(Typeface.BOLD), termsOfUseStartIndex, termsOfUseEndIndex, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+
+        termsTextView.setText(spannableStringBuilder);
+        termsTextView.setMovementMethod(LinkMovementMethod.getInstance());
+
 
     }
 
@@ -484,6 +540,27 @@ public class RegisterActivity extends AppCompatActivity implements DatePickerDia
         }
     }
 
+//    private void openWebPage(String url) {
+//        Log.e("ooooopen web page", "oooooopen");
+//        Uri webpage = Uri.parse(url);
+//        Intent intent = new Intent(Intent.ACTION_VIEW, webpage);
+//        if (intent.resolveActivity(getPackageManager()) != null) {
+//            startActivity(intent);
+//        }
+//    }
+private void openWebPage(String url) {
+    Log.d("openWebPage", "Opening web page: " + url);
+    Uri webpage = Uri.parse(url);
+    Intent intent = new Intent(Intent.ACTION_VIEW, webpage);
+    startActivity(intent);
+
+//    if (intent.resolveActivity(getPackageManager()) != null) {
+//        Log.d("openWebPage", "Starting activity to open web page.");
+//        startActivity(intent);
+//    } else {
+//        Log.d("openWebPage", "No activity found to handle the web page intent.");
+//    }
+}
 
     @Override
     protected void onStart() {
