@@ -497,7 +497,7 @@
 
 
             <LinearLayout
-                android:id="@+id/linearLayoutSettingsSupport"
+                android:id="@+id/linearLayoutSettingsPrivacyPolicy"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/_10sdp"
@@ -508,15 +508,56 @@
                 <TextView
                     android:fontFamily="@font/leckerlione_regular"
                     android:textColor="@color/colorPink"
-                    android:id="@+id/textViewSettingsSupport"
+                    android:id="@+id/textViewSettingsPrivacyPolicy"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/helpandsupport"
+                    android:text="@string/pravicy_policy"
                     android:textSize="@dimen/_14ssp"
                     android:textStyle="bold"
                     tools:ignore="HardcodedText" />
 
             </LinearLayout>
+            <LinearLayout
+                android:id="@+id/linearLayoutSettingsTerms"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/_10sdp"
+                android:background="@color/colorWhite"
+                android:orientation="vertical"
+                android:padding="@dimen/_20sdp">
+
+                <TextView
+                    android:fontFamily="@font/leckerlione_regular"
+                    android:textColor="@color/colorPink"
+                    android:id="@+id/textViewSettingsTerms"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/term"
+                    android:textSize="@dimen/_14ssp"
+                    android:textStyle="bold"
+                    tools:ignore="HardcodedText" />
+
+            </LinearLayout>      <LinearLayout
+            android:id="@+id/linearLayoutSettingsSupport"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:background="@color/colorWhite"
+            android:orientation="vertical"
+            android:padding="@dimen/_20sdp">
+
+            <TextView
+                android:fontFamily="@font/leckerlione_regular"
+                android:textColor="@color/colorPink"
+                android:id="@+id/textViewSettingsSupport"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/helpandsupport"
+                android:textSize="@dimen/_14ssp"
+                android:textStyle="bold"
+                tools:ignore="HardcodedText" />
+
+        </LinearLayout>
 
             <Button
                 android:fontFamily="@font/leckerlione_regular"

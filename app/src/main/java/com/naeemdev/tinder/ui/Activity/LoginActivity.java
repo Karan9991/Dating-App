@@ -1,6 +1,7 @@
 package com.naeemdev.tinder.ui.Activity;
 
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -12,6 +13,7 @@ import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -19,6 +21,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.naeemdev.tinder.R;
 
 public class LoginActivity extends AppCompatActivity {
@@ -54,7 +57,6 @@ public class LoginActivity extends AppCompatActivity {
                 showForgotPasswordBottomSheet();
             }
         });
-
         btnLoginPageLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -62,7 +64,7 @@ public class LoginActivity extends AppCompatActivity {
                 String userEmail = loginEmail.getText().toString();
                 String userPass = loginPass.getText().toString();
 
-                if (!TextUtils.isEmpty(userEmail) && !TextUtils.isEmpty((userPass))) {
+                if (!TextUtils.isEmpty(userEmail) && !TextUtils.isEmpty(userPass)) {
 
                     dialog.show();
 
@@ -70,11 +72,18 @@ public class LoginActivity extends AppCompatActivity {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {
-                                sendToMain();
-                                dialog.dismiss();
+                                FirebaseUser user = userAuth.getCurrentUser();
+                                if (user != null && user.isEmailVerified()) {
+                                    sendToMain();
+                                    dialog.dismiss();
+                                } else {
+                                    emailVerificationDialog();
+                                    Toast.makeText(LoginActivity.this, "Please verify your email address before logging in.", Toast.LENGTH_LONG).show();
+                                    dialog.dismiss();
+                                }
                             } else {
                                 String errorMessage = task.getException().getMessage();
-                                Toast.makeText(LoginActivity.this, "Error : " + errorMessage, Toast.LENGTH_LONG).show();
+                                Toast.makeText(LoginActivity.this, "Error: " + errorMessage, Toast.LENGTH_LONG).show();
                                 dialog.dismiss();
                             }
                         }
@@ -138,5 +147,20 @@ public class LoginActivity extends AppCompatActivity {
         });
 
         bottomSheetDialog.show();
+    }
+
+    private void emailVerificationDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Your Email Not Verified")
+                .setMessage("Email verification required. Please check your email to verify your account.")
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                });
+
+        AlertDialog dialog = builder.create();
+        dialog.show();
     }
 }

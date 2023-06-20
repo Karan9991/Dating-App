@@ -178,49 +178,72 @@ public class RegisterActivity extends AppCompatActivity implements DatePickerDia
                                         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
                                         String currentUser = firebaseUser.getUid();
 
-                                        Map<String, Object> userProfile = new HashMap<>();
-                                        userProfile.put("user_uid", currentUser);
-                                        userProfile.put("user_email", stringEmail);
-                                        userProfile.put("user_epass", stringPassword);
-                                        userProfile.put("user_name", stringName);
-                                        userProfile.put("user_gender", stringGender);
-                                        userProfile.put("user_birthday", stringBirthday);
-                                        userProfile.put("user_birthage", AgeUser(stringBirthday));
-                                        userProfile.put("user_city", string_city);
-                                        userProfile.put("user_state", string_state);
-                                        userProfile.put("user_country", string_country);
-                                        userProfile.put("user_location", string_location);
-                                        userProfile.put("user_thumb", "thumb");
-                                        userProfile.put("user_image", "image");
-                                        userProfile.put("user_cover", "cover");
-                                        userProfile.put("user_status", "offline");
-                                        userProfile.put("user_looking", stringLooking);
-                                        userProfile.put("user_about", "Hi! Everybody I am newbie here.");
-                                        userProfile.put("user_latitude", stringLatitude);
-                                        userProfile.put("user_longitude", stringLongitude);
-                                        userProfile.put("user_online", Timestamp.now());
-                                        userProfile.put("user_joined", Timestamp.now());
-
-                                        firebaseFirestore.collection("users")
-                                                .document(currentUser)
-                                                .set(userProfile)
+                                        firebaseUser.sendEmailVerification()
                                                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                                                     @Override
                                                     public void onComplete(@NonNull Task<Void> task) {
                                                         if (task.isSuccessful()) {
+                                                            // Email sent successfully
 
-                                                            Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
-                                                            startActivity(intent);
-                                                            finish();
-                                                            dialog.dismiss();
+                                                            Map<String, Object> userProfile = new HashMap<>();
+                                                            userProfile.put("user_uid", currentUser);
+                                                            userProfile.put("user_email", stringEmail);
+                                                            userProfile.put("user_epass", stringPassword);
+                                                            userProfile.put("user_name", stringName);
+                                                            userProfile.put("user_gender", stringGender);
+                                                            userProfile.put("user_birthday", stringBirthday);
+                                                            userProfile.put("user_birthage", AgeUser(stringBirthday));
+                                                            userProfile.put("user_city", string_city);
+                                                            userProfile.put("user_state", string_state);
+                                                            userProfile.put("user_country", string_country);
+                                                            userProfile.put("user_location", string_location);
+                                                            userProfile.put("user_thumb", "thumb");
+                                                            userProfile.put("user_image", "image");
+                                                            userProfile.put("user_cover", "cover");
+                                                            userProfile.put("user_status", "offline");
+                                                            userProfile.put("user_looking", stringLooking);
+                                                            userProfile.put("user_about", "Hi! Everybody I am newbie here.");
+                                                            userProfile.put("user_latitude", stringLatitude);
+                                                            userProfile.put("user_longitude", stringLongitude);
+                                                            userProfile.put("user_online", Timestamp.now());
+                                                            userProfile.put("user_joined", Timestamp.now());
+
+                                                            firebaseFirestore.collection("users")
+                                                                    .document(currentUser)
+                                                                    .set(userProfile)
+                                                                    .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                                                        @Override
+                                                                        public void onComplete(@NonNull Task<Void> task) {
+                                                                            if (task.isSuccessful()) {
+                                                                                dialog.dismiss();
+
+                                                                                emailVerificationSentDialog();
+
+
+                                                                            } else {
+                                                                                Toast.makeText(RegisterActivity.this, "Something went wrong! Please try again!", Toast.LENGTH_SHORT).show();
+                                                                                dialog.dismiss();
+                                                                            }
+                                                                        }
+                                                                    });
+
+                                                            Toast.makeText(RegisterActivity.this,
+                                                                    "Verification email sent. Please check your email.",
+                                                                    Toast.LENGTH_SHORT).show();
                                                         } else {
-                                                            Toast.makeText(RegisterActivity.this, "Something went wrong! Please try again!", Toast.LENGTH_SHORT).show();
+                                                            // Failed to send email
                                                             dialog.dismiss();
+                                                            Toast.makeText(RegisterActivity.this,
+                                                                    "Failed to send verification email. Please try again.",
+                                                                    Toast.LENGTH_SHORT).show();
                                                         }
                                                     }
                                                 });
 
+
+
                                     } else {
+                                        dialog.dismiss();
 
                                         Toast.makeText(RegisterActivity.this, "Please check errors to proceed!", Toast.LENGTH_SHORT).show();
                                     }
@@ -553,13 +576,6 @@ private void openWebPage(String url) {
     Uri webpage = Uri.parse(url);
     Intent intent = new Intent(Intent.ACTION_VIEW, webpage);
     startActivity(intent);
-
-//    if (intent.resolveActivity(getPackageManager()) != null) {
-//        Log.d("openWebPage", "Starting activity to open web page.");
-//        startActivity(intent);
-//    } else {
-//        Log.d("openWebPage", "No activity found to handle the web page intent.");
-//    }
 }
 
     @Override
@@ -570,5 +586,23 @@ private void openWebPage(String url) {
         GPSLocationServiceCheck();
 
 
+    }
+
+    private void emailVerificationSentDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Check Your Email to Verify")
+                .setMessage("An email with a verification link has been sent to your email address. Please check your inbox and click on the link to verify your account.")
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                        Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
+                        startActivity(intent);
+                       // finish();
+                    }
+                });
+
+        AlertDialog dialog = builder.create();
+        dialog.show();
     }
 }

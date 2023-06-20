@@ -2,7 +2,9 @@ package com.naeemdev.tinder.ui.Activity;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -55,6 +57,8 @@ public class SettingsActivity extends AppCompatActivity {
     LinearLayout linearLayoutSettingsAccount;
     LinearLayout linearLayoutSettingsSupport;
     LinearLayout linearLayoutSettingsNotify;
+    LinearLayout linearLayoutSettingsPrivacyPolicy;
+    LinearLayout linearLayoutSettingsTerms;
 
     Button buttonSettingsAccountLogout;
     Button buttonSettingsDeleteAccount;
@@ -119,6 +123,8 @@ public class SettingsActivity extends AppCompatActivity {
 
 
         linearLayoutSettingsAccount = findViewById(R.id.linearLayoutSettingsAccount);
+        linearLayoutSettingsPrivacyPolicy = findViewById(R.id.linearLayoutSettingsPrivacyPolicy);
+        linearLayoutSettingsTerms = findViewById(R.id.linearLayoutSettingsTerms);
         linearLayoutSettingsSupport = findViewById(R.id.linearLayoutSettingsSupport);
         linearLayoutSettingsNotify = findViewById(R.id.linearLayoutSettingsNotify);
 
@@ -295,6 +301,21 @@ public class SettingsActivity extends AppCompatActivity {
 
                 Intent intent = new Intent(SettingsActivity.this, SupportActivity.class);
                 startActivity(intent);
+            }
+        });
+
+        linearLayoutSettingsPrivacyPolicy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openWebPage("https://doc-hosting.flycricket.io/delhi-dating-privacy-policy/4e1e9ec1-c0bf-4f30-b29c-27138acad037/privacy");
+
+            }
+        });    linearLayoutSettingsTerms.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openWebPage("https://doc-hosting.flycricket.io/delhi-dating-terms-of-use/73b7f589-5a29-48f7-8d7a-dedbe15335bb/terms");
+
+
             }
         });
 
@@ -659,5 +680,10 @@ public class SettingsActivity extends AppCompatActivity {
         startActivity(intent);
         finish();
     }
-
+    private void openWebPage(String url) {
+        Log.d("openWebPage", "Opening web page: " + url);
+        Uri webpage = Uri.parse(url);
+        Intent intent = new Intent(Intent.ACTION_VIEW, webpage);
+        startActivity(intent);
+    }
 }
