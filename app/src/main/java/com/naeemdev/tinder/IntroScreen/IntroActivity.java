@@ -9,6 +9,7 @@ import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationManager;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -27,6 +28,11 @@ import androidx.viewpager.widget.ViewPager;
 import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.naeemdev.tinder.R;
 import com.naeemdev.tinder.IntroScreen.SplashScreen;
 import com.naeemdev.tinder.ui.Activity.LoginActivity;
@@ -42,27 +48,28 @@ public class IntroActivity extends AppCompatActivity {
     TabLayout tabIndicator;
     Button btnNext;
     int position = 0 ;
+    int fvalue = -1;
     Button btnGetStarted;
     Animation btnAnim ;
     TextView tvSkip;
     FirebaseUser firebaseUser;
     FirebaseAuth firebaseAuth;
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 100;
+    private DatabaseReference databaseReference;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         // make the activity on full screen
-
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
-
-
         // when this activity is about to be launch we need to check if its openened before or not
+
+        fetchDataFromFirebase();
+
         if (restorePrefData()) {
 
             Intent mainActivity = new Intent(getApplicationContext(), LoginActivity.class );
@@ -70,11 +77,8 @@ public class IntroActivity extends AppCompatActivity {
             finish();
 
         }
-
         setContentView(R.layout.activity_intro);
-
         // hide the action bar
-
 //       getSupportActionBar().hide();
 
         // ini views
@@ -100,6 +104,9 @@ public class IntroActivity extends AppCompatActivity {
 
         tabIndicator.setupWithViewPager(screenPager);
 
+
+
+
         // next button click Listner
 
         btnNext.setOnClickListener(new View.OnClickListener() {
@@ -108,18 +115,13 @@ public class IntroActivity extends AppCompatActivity {
 
                 position = screenPager.getCurrentItem();
                 if (position < mList.size()) {
-
                     position++;
                     screenPager.setCurrentItem(position);
                 }
 
                 if (position == mList.size()-1) { // when we rech to the last screen
-
                     // TODO : show the GETSTARTED Button and hide the indicator and the next button
-
                     loaddLastScreen();
-
-
                 }
 
 
@@ -135,12 +137,8 @@ public class IntroActivity extends AppCompatActivity {
             public void onTabSelected(TabLayout.Tab tab) {
 
                 if (tab.getPosition() == mList.size()-1) {
-
                     loaddLastScreen();
-
                 }
-
-
             }
 
             @Override
@@ -162,58 +160,36 @@ public class IntroActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-
-             //   ActivityCompat.requestPermissions(IntroActivity.this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, LOCATION_PERMISSION_REQUEST_CODE);
-
-
-                //open main activity
-
-                Intent mainActivity = new Intent(getApplicationContext(), LoginActivity.class);
-                startActivity(mainActivity);
-                // also we need to save a boolean value to storage so next time when the user run the app
-                // we could know that he is already checked the intro screen activity
-                // i'm going to use shared preferences to that process
-                savePrefsData();
-                finish();
-
-
-
+                Log.e("ffff value", " "+fvalue);
+               if (fvalue == 1){
+                    Log.e("iiif","iiif");
+                    ActivityCompat.requestPermissions(IntroActivity.this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, LOCATION_PERMISSION_REQUEST_CODE);
+                }
+                else {
+                    Log.e("eeelse","else");
+                   Intent mainActivity = new Intent(getApplicationContext(), LoginActivity.class);
+                   startActivity(mainActivity);
+                   savePrefsData();
+                   finish();
+                }
             }
         });
-
-        // skip button click listener
-//
-//        tvSkip.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                screenPager.setCurrentItem(mList.size());
-//            }
-//        });
-
-
-
     }
 
     private boolean restorePrefData() {
         SharedPreferences pref = getApplicationContext().getSharedPreferences("myPrefs",MODE_PRIVATE);
         Boolean isIntroActivityOpnendBefore = pref.getBoolean("isIntroOpnend",false);
         return  isIntroActivityOpnendBefore;
-
     }
-
     private void savePrefsData() {
-
         SharedPreferences pref = getApplicationContext().getSharedPreferences("myPrefs",MODE_PRIVATE);
         SharedPreferences.Editor editor = pref.edit();
         editor.putBoolean("isIntroOpnend",true);
         editor.commit();
-
-
     }
 
     // show the GETSTARTED Button and hide the indicator and the next button
     private void loaddLastScreen() {
-
         btnNext.setVisibility(View.INVISIBLE);
         btnGetStarted.setVisibility(View.VISIBLE);
     //    tvSkip.setVisibility(View.INVISIBLE);
@@ -221,9 +197,6 @@ public class IntroActivity extends AppCompatActivity {
         // TODO : ADD an animation the getstarted button
         // setup animation
         btnGetStarted.setAnimation(btnAnim);
-
-
-
     }
 
     @Override
@@ -252,7 +225,11 @@ public class IntroActivity extends AppCompatActivity {
                     // Check if the user's location is within the specific circle of the target region (Halifax)
                     if (isLocationInHalifax(latitude, longitude)) {
                         // User is in Halifax, proceed with sign up
-                        Toast.makeText(getApplicationContext(), "User is in Halifax", Toast.LENGTH_SHORT).show();
+                        Intent mainActivity = new Intent(getApplicationContext(), LoginActivity.class);
+                        startActivity(mainActivity);
+                        savePrefsData();
+                        finish();
+                       // Toast.makeText(getApplicationContext(), "User is in Halifax", Toast.LENGTH_SHORT).show();
                       //  showSignUpActivity();
                     } else {
                         // User is not in Halifax, show dialog or toast informing the user about the restriction
@@ -269,8 +246,8 @@ public class IntroActivity extends AppCompatActivity {
         }
     }
     private boolean isLocationInHalifax(double latitude, double longitude) {
-        double halifaxLatitude = 28.653625; // Latitude of Halifax city 44.649381, -63.593002 44.723765, -63.711132
-        double halifaxLongitude = 77.141284; // Longitude of Halifax city 44.661144, -63.644245
+        double halifaxLatitude = 44.644674; // Latitude of Halifax city  44.644674, -63.594469
+        double halifaxLongitude = -63.594469; // Longitude of Halifax city //delhi lat lng 28.653625   77.141284
 
 
         double radius = 25.0; // Radius of the circle in kilometers
@@ -329,6 +306,40 @@ public class IntroActivity extends AppCompatActivity {
         AlertDialog dialog = builder.create();
         dialog.show();
     }
+    private void fetchDataFromFirebase() {
+        // Get a reference to the Firebase database
+        FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
 
+        // Specify the path to the value you want to retrieve
+        databaseReference = firebaseDatabase.getReference("loc");
+
+        // Add a listener to fetch the value from the database
+        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                // Retrieve the value from the dataSnapshot
+                Integer value = dataSnapshot.getValue(Integer.class);
+
+                fvalue = value;
+
+                Log.e("vvvvvv"," "+value);
+
+                // Check the value and perform actions based on the condition
+                if (value != null && value == 0) {
+                    // Value is 1, proceed with your logic here
+                    // ...
+                } else {
+                    // Value is not 1, handle the condition as per your requirement
+                    // ...
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                // Handle any errors that occur during the database operation
+                // ...
+            }
+        });
+    }
 
 }

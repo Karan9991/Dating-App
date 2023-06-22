@@ -65,6 +65,36 @@ public class LoginActivity extends AppCompatActivity {
                 showForgotPasswordBottomSheet();
             }
         });
+//            btnLoginPageLogin.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//
+//                    String userEmail = loginEmail.getText().toString();
+//                    String userPass = loginPass.getText().toString();
+//
+//                    if (!TextUtils.isEmpty(userEmail) && !TextUtils.isEmpty((userPass))) {
+//
+//                        dialog.show();
+//
+//                        userAuth.signInWithEmailAndPassword(userEmail, userPass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+//                            @Override
+//                            public void onComplete(@NonNull Task<AuthResult> task) {
+//                                if (task.isSuccessful()) {
+//                                    sendToMain();
+//                                    dialog.dismiss();
+//                                } else {
+//                                    String errorMessage = task.getException().getMessage();
+//                                    Toast.makeText(LoginActivity.this, "Error : " + errorMessage, Toast.LENGTH_LONG).show();
+//                                    dialog.dismiss();
+//                                }
+//                            }
+//                        });
+//                    } else {
+//                        Toast.makeText(LoginActivity.this, "Please enter your email and password!", Toast.LENGTH_SHORT).show();
+//                    }
+//                }
+//            });
+        //original
         btnLoginPageLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -139,6 +139,116 @@ public class RegisterActivity extends AppCompatActivity implements DatePickerDia
             }
         });
 
+//        btnRegisterPageRegister.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//                if (radioButtonRegisterGender != null) {
+//                    if (string_city != null && !string_city.equals("city") &&
+//                            string_state != null && !string_state.equals("state") &&
+//                            string_country != null && !string_country.equals("country")) {
+//
+//                        final String stringName = editTextRegisterName.getText().toString();
+//                        final String stringEmail = editTextRegisterEmail.getText().toString();
+//                        final String stringPassword = editTextRegisterPassword.getText().toString();
+//                        final String stringGender = radioButtonRegisterGender.getText().toString();
+//                        final String stringBirthday = textViewRegisterBirthday.getText().toString();
+//
+//                        if (stringGender.equals("Male")) {
+//                            stringLooking = "Woman";
+//                        } else {
+//                            stringLooking = "Man";
+//                        }
+//
+//                        if (!TextUtils.isEmpty(stringName) &&
+//                                !TextUtils.isEmpty(stringEmail) &&
+//                                !TextUtils.isEmpty(stringPassword) &&
+//                                !TextUtils.isEmpty(stringGender) &&
+//                                !TextUtils.isEmpty(stringBirthday)) {
+//
+//                            dialog.show();
+//
+//
+//                            firebaseAuth.createUserWithEmailAndPassword(stringEmail, stringPassword).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+//                                @Override
+//                                public void onComplete(@NonNull Task<AuthResult> task) {
+//                                    if (task.isSuccessful()) {
+//
+//                                        firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+//                                        String currentUser = firebaseUser.getUid();
+//
+//                                        Map<String, Object> userProfile = new HashMap<>();
+//                                        userProfile.put("user_uid", currentUser);
+//                                        userProfile.put("user_email", stringEmail);
+//                                        userProfile.put("user_epass", stringPassword);
+//                                        userProfile.put("user_name", stringName);
+//                                        userProfile.put("user_gender", stringGender);
+//                                        userProfile.put("user_birthday", stringBirthday);
+//                                        userProfile.put("user_birthage", AgeUser(stringBirthday));
+//                                        userProfile.put("user_city", string_city);
+//                                        userProfile.put("user_state", string_state);
+//                                        userProfile.put("user_country", string_country);
+//                                        userProfile.put("user_location", string_location);
+//                                        userProfile.put("user_thumb", "thumb");
+//                                        userProfile.put("user_image", "image");
+//                                        userProfile.put("user_cover", "cover");
+//                                        userProfile.put("user_status", "offline");
+//                                        userProfile.put("user_looking", stringLooking);
+//                                        userProfile.put("user_about", "Hi! Everybody I am newbie here.");
+//                                        userProfile.put("user_latitude", stringLatitude);
+//                                        userProfile.put("user_longitude", stringLongitude);
+//                                        userProfile.put("user_online", Timestamp.now());
+//                                        userProfile.put("user_joined", Timestamp.now());
+//
+//                                        firebaseFirestore.collection("users")
+//                                                .document(currentUser)
+//                                                .set(userProfile)
+//                                                .addOnCompleteListener(new OnCompleteListener<Void>() {
+//                                                    @Override
+//                                                    public void onComplete(@NonNull Task<Void> task) {
+//                                                        if (task.isSuccessful()) {
+//
+//                                                            Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
+//                                                            startActivity(intent);
+//                                                            finish();
+//                                                            dialog.dismiss();
+//                                                        } else {
+//                                                            Toast.makeText(RegisterActivity.this, "Something went wrong! Please try again!", Toast.LENGTH_SHORT).show();
+//                                                            dialog.dismiss();
+//                                                        }
+//                                                    }
+//                                                });
+//
+//                                    } else {
+//
+//                                        Toast.makeText(RegisterActivity.this, "Please check errors to proceed!", Toast.LENGTH_SHORT).show();
+//                                    }
+//                                }
+//
+//                            });
+//
+//
+//                        } else {
+//
+//                            Toast.makeText(RegisterActivity.this, "Please Fill in all the details to proceed!", Toast.LENGTH_SHORT).show();
+//
+//                        }
+//
+//                    } else {
+//                        Toast.makeText(RegisterActivity.this, "Please turn on Location service to continue.", Toast.LENGTH_SHORT).show();
+//
+//                    }
+//
+//                } else {
+//                    Toast.makeText(RegisterActivity.this, "Please Fill in all the details to proceed!", Toast.LENGTH_SHORT).show();
+//
+//                }
+//
+//            }
+//        });
+
+
+        //original
         btnRegisterPageRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
