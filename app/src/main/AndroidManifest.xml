@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.naeemdev.tinder">
+    package="com.delhi.dating">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -13,7 +13,7 @@
     <uses-permission android:name="android.permission.VIBRATE" />
 
     <application
-        android:name="com.naeemdev.tinder.Application"
+        android:name="com.delhi.dating.Application"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -22,51 +22,51 @@
         android:requestLegacyExternalStorage="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name="com.naeemdev.tinder.ui.Activity.PasswordActivity"
+            android:name="com.delhi.dating.ui.Activity.PasswordActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.naeemdev.tinder.ui.Activity.SupportActivity"
+            android:name="com.delhi.dating.ui.Activity.SupportActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.naeemdev.tinder.ui.Activity.NotificationActivity"
+            android:name="com.delhi.dating.ui.Activity.NotificationActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.naeemdev.tinder.ui.Activity.AccountActivity"
+            android:name="com.delhi.dating.ui.Activity.AccountActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.naeemdev.tinder.ui.Activity.ReportActivity"
+            android:name="com.delhi.dating.ui.Activity.ReportActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.naeemdev.tinder.ui.Activity.ProfileEditActivity"
+            android:name="com.delhi.dating.ui.Activity.ProfileEditActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.naeemdev.tinder.ui.Activity.SettingsActivity"
+            android:name="com.delhi.dating.ui.Activity.SettingsActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.naeemdev.tinder.ui.Activity.ProfileActivity"
+            android:name="com.delhi.dating.ui.Activity.ProfileActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.naeemdev.tinder.ui.Activity.RegisterActivity"
+            android:name="com.delhi.dating.ui.Activity.RegisterActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.naeemdev.tinder.ui.Activity.LoginActivity"
+            android:name="com.delhi.dating.ui.Activity.LoginActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.naeemdev.tinder.ui.Activity.RemindActivity"
+            android:name="com.delhi.dating.ui.Activity.RemindActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.naeemdev.tinder.ui.Activity.StartActivity"
+            android:name="com.delhi.dating.ui.Activity.StartActivity"
             android:screenOrientation="portrait" />
         <activity android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
             android:theme="@style/Base.Theme.AppCompat"/>
         <activity
-            android:name="com.naeemdev.tinder.ui.Activity.MessageActivity"
+            android:name="com.delhi.dating.ui.Activity.MessageActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.naeemdev.tinder.ui.Activity.AccountsActivity"
+            android:name="com.delhi.dating.ui.Activity.AccountsActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.naeemdev.tinder.ui.Activity.MainActivity"
+            android:name="com.delhi.dating.ui.Activity.MainActivity"
             android:screenOrientation="portrait"
             android:exported="true">
 <!--            <intent-filter>-->
@@ -76,9 +76,9 @@
 <!--                <category android:name="android.intent.category.LAUNCHER" />-->
 <!--            </intent-filter>-->
         </activity>
-        <activity android:name=".IntroScreen.SplashScreen" />
+        <activity android:name="com.delhi.dating.IntroScreen.SplashScreen" />
         <activity
-            android:name=".IntroScreen.IntroActivity"
+            android:name="com.delhi.dating.IntroScreen.IntroActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -87,10 +87,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <service android:name="com.naeemdev.tinder.service.ServiceClass" />
+        <service android:name="com.delhi.dating.service.ServiceClass" />
 
         <service
-            android:name="com.naeemdev.tinder.Notifications.MyFirebaseIdService"
+            android:name="com.delhi.dating.Notifications.MyFirebaseIdService"
             android:enabled="true"
             android:exported="true">
             <intent-filter>
@@ -98,7 +98,7 @@
             </intent-filter>
         </service>
         <service
-            android:name="com.naeemdev.tinder.Notifications.MyFirebaseMessaging"
+            android:name="com.delhi.dating.Notifications.MyFirebaseMessaging"
             android:enabled="true"
             android:exported="true">
             <intent-filter>

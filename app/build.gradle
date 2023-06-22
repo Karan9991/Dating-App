@@ -4,13 +4,14 @@ android {
     compileSdkVersion 32
     buildToolsVersion "29.0.2"
     defaultConfig {
-        applicationId "com.naeemdev.tinder"
+        applicationId "com.delhi.dating"
         minSdkVersion 23
         targetSdkVersion 32
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
+        resConfigs "en", "US"
     }
     buildTypes {
         release {
